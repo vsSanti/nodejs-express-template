@@ -1,7 +1,7 @@
 import faker from '@faker-js/faker';
 
 import { HelloWorldController } from '@/presentation/controllers';
-import { ok } from '@/presentation/helpers';
+import { badRequest, ok } from '@/presentation/helpers';
 
 import { ValidationSpy } from '@/tests/domain/mocks';
 
@@ -25,6 +25,12 @@ describe('HelloWorld Controller', () => {
   it('should call Validation with correct params', async () => {
     await sut.handle(request);
     expect(validationSpy.input).toEqual(request.body);
+  });
+
+  it('should return 400 if Validation returns an error', async () => {
+    validationSpy.error = new Error();
+    const response = await sut.handle(request);
+    expect(response).toEqual(badRequest(validationSpy.error));
   });
 
   it('should return 200 with correct body on success', async () => {

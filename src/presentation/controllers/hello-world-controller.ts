@@ -1,5 +1,5 @@
 import { Validation } from '@/domain/usecases';
-import { ok } from '@/presentation/helpers';
+import { badRequest, ok } from '@/presentation/helpers';
 import { Controller, HttpResponse } from '@/presentation/protocols';
 
 export class HelloWorldController implements Controller {
@@ -10,7 +10,8 @@ export class HelloWorldController implements Controller {
   }
 
   async handle({ body }: HelloWorldController.Request): Promise<HttpResponse> {
-    this.validation.validate(body);
+    const error = await this.validation.validate(body);
+    if (error) return badRequest(error);
 
     return ok({ message: body.message });
   }
