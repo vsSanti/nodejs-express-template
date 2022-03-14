@@ -4,7 +4,7 @@ export class ValidationSpy implements Validation {
   error: Error | undefined;
   input: any;
 
-  validate(input: any): Error | undefined {
+  async validate(input: any): Promise<Error | undefined> {
     this.input = input;
     return this.error;
   }
