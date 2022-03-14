@@ -1,5 +1,6 @@
 import { ValidateParametersAdapter } from '@/data/protocols';
 import { Validation } from '@/domain/usecases';
+import { ObjectValidationError } from '@/presentation/errors';
 
 export class ValidateParameters implements Validation {
   private readonly validateParametersAdapter: ValidateParametersAdapter;
@@ -9,8 +10,12 @@ export class ValidateParameters implements Validation {
   }
 
   async validate(input: any): Promise<Error | undefined> {
-    this.validateParametersAdapter.validate(input);
-    return undefined;
+    try {
+      await this.validateParametersAdapter.validate(input);
+      return undefined;
+    } catch (error) {
+      return new ObjectValidationError();
+    }
   }
 }
 
