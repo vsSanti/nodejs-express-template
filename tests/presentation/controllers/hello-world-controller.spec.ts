@@ -3,7 +3,7 @@ import faker from '@faker-js/faker';
 import { HelloWorldController } from '@/presentation/controllers';
 import { badRequest, ok } from '@/presentation/helpers';
 
-import { ValidationSpy } from '@/tests/domain/mocks';
+import { throwError, ValidationSpy } from '@/tests/domain/mocks';
 
 const mockRequest = (): HelloWorldController.Request => ({
   body: {
@@ -31,6 +31,12 @@ describe('HelloWorld Controller', () => {
     validationSpy.error = new Error();
     const response = await sut.handle(request);
     expect(response).toEqual(badRequest(validationSpy.error));
+  });
+
+  it('should throw if Validation throws', async () => {
+    jest.spyOn(validationSpy, 'validate').mockImplementationOnce(throwError);
+    const promise = sut.handle(request);
+    await expect(promise).rejects.toThrow();
   });
 
   it('should return 200 with correct body on success', async () => {
