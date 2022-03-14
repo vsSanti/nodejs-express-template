@@ -4,7 +4,7 @@
   "description": "A template to use as a starter for personal projects",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/main/server.ts",
     "prepare": "husky install",
     "test": "jest --passWithNoTests --runInBand --no-cache",
     "test:coverage": "npm test -- -c ./jest-configs/coverage.ts"
@@ -12,6 +12,7 @@
   "author": "Vinicius Santiago <viniciussdsilva@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
@@ -26,5 +27,8 @@
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.0",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
