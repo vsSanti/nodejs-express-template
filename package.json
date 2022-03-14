@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-express-template",
+  "version": "0.0.0",
+  "description": "A template to use as a starter for personal projects",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "Vinicius Santiago <viniciussdsilva@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^3.14.0",
+    "typescript": "^4.6.2"
+  }
+}
