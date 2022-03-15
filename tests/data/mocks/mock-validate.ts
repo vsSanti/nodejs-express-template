@@ -1,9 +1,9 @@
 import { ValidateParametersAdapter } from '@/data/protocols';
 
 export class ValidateParametersAdapterSpy implements ValidateParametersAdapter {
-  input: any;
+  params: any;
 
-  async validate(input: any): Promise<void> {
-    this.input = input;
+  async validate(params: any): Promise<void> {
+    this.params = params;
   }
 }

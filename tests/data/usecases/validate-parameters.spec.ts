@@ -23,7 +23,7 @@ describe('ValidateParameters usecase', () => {
 
   it('should call ValidateParametersAdapter with correct values', async () => {
     await sut.validate(request);
-    expect(validateParametersAdapterSpy.input).toEqual(request);
+    expect(validateParametersAdapterSpy.params).toEqual(request);
   });
 
   it('should return an ObjectValidationError if ValidationParametersAdapter throws', async () => {

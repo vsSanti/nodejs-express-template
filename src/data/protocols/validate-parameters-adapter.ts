@@ -1,3 +1,3 @@
 export interface ValidateParametersAdapter {
-  validate: (input: any) => Promise<void>;
+  validate: (params: any) => Promise<void>;
 }

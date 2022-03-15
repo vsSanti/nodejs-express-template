@@ -5,17 +5,17 @@ import { ValidateParametersAdapter } from '@/data/protocols';
 export class JoiAdapter implements ValidateParametersAdapter {
   private readonly schema: Schema;
 
-  constructor(params: JoiAdapter.Params) {
+  constructor(params: JoiAdapter.ConstructorParams) {
     Object.assign(this, params);
   }
 
-  async validate(input: any): Promise<void> {
-    await this.schema.validateAsync(input);
+  async validate(params: any): Promise<void> {
+    await this.schema.validateAsync(params);
   }
 }
 
 declare namespace JoiAdapter {
-  export type Params = {
+  export type ConstructorParams = {
     schema: Schema;
   };
 }

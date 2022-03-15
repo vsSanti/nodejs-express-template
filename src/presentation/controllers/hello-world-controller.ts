@@ -5,11 +5,11 @@ import { Controller, HttpResponse } from '@/presentation/protocols';
 export class HelloWorldController implements Controller {
   private readonly validation: Validation;
 
-  constructor(params: HelloWorldController.Params) {
+  constructor(params: HelloWorldController.ConstructorParams) {
     Object.assign(this, params);
   }
 
-  async handle({ body }: HelloWorldController.Request): Promise<HttpResponse> {
+  async handle({ body }: HelloWorldController.HandleParams): Promise<HttpResponse> {
     const error = await this.validation.validate(body);
     if (error) return badRequest(error);
 
@@ -18,11 +18,11 @@ export class HelloWorldController implements Controller {
 }
 
 export namespace HelloWorldController {
-  export type Params = {
+  export type ConstructorParams = {
     validation: Validation;
   };
 
-  export type Request = {
+  export type HandleParams = {
     body: {
       message: string;
     };

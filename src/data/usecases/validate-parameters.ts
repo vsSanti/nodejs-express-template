@@ -5,13 +5,13 @@ import { ObjectValidationError } from '@/presentation/errors';
 export class ValidateParameters implements Validation {
   private readonly validateParametersAdapter: ValidateParametersAdapter;
 
-  constructor(params: ValidateParameters.Params) {
+  constructor(params: ValidateParameters.ConstructorParams) {
     Object.assign(this, params);
   }
 
-  async validate(input: any): Promise<Error | undefined> {
+  async validate(params: any): Promise<Error | undefined> {
     try {
-      await this.validateParametersAdapter.validate(input);
+      await this.validateParametersAdapter.validate(params);
       return undefined;
     } catch (error) {
       return new ObjectValidationError();
@@ -20,7 +20,7 @@ export class ValidateParameters implements Validation {
 }
 
 declare namespace ValidateParameters {
-  export type Params = {
+  export type ConstructorParams = {
     validateParametersAdapter: ValidateParametersAdapter;
   };
 }

@@ -5,7 +5,7 @@ import { badRequest, ok } from '@/presentation/helpers';
 
 import { throwError, ValidationSpy } from '@/tests/domain/mocks';
 
-const mockRequest = (): HelloWorldController.Request => ({
+const mockRequest = (): HelloWorldController.HandleParams => ({
   body: {
     message: faker.random.words(5),
   },
@@ -14,7 +14,7 @@ const mockRequest = (): HelloWorldController.Request => ({
 describe('HelloWorld Controller', () => {
   let validationSpy: ValidationSpy;
   let sut: HelloWorldController;
-  let request: HelloWorldController.Request;
+  let request: HelloWorldController.HandleParams;
 
   beforeEach(() => {
     validationSpy = new ValidationSpy();
@@ -24,7 +24,7 @@ describe('HelloWorld Controller', () => {
 
   it('should call Validation with correct params', async () => {
     await sut.handle(request);
-    expect(validationSpy.input).toEqual(request.body);
+    expect(validationSpy.params).toEqual(request.body);
   });
 
   it('should return 400 if Validation returns an error', async () => {
