@@ -1,3 +1,3 @@
 export interface Validation {
-  validate: (input: any) => Error | undefined;
+  validate: (params: any) => Promise<Error | undefined>;
 }
