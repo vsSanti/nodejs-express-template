@@ -1,3 +1,4 @@
+import faker from '@faker-js/faker';
 import Joi, { Schema } from 'joi';
 
 import { JoiAdapter } from '@/infra/adapter';
@@ -15,6 +16,11 @@ describe('Joi Adapter', () => {
     it('should reject if input is not valid', async () => {
       const promise = sut.validate({});
       await expect(promise).rejects.toThrow();
+    });
+
+    it('should return void if input is valid', async () => {
+      const promise = sut.validate({ name: faker.name.firstName() });
+      await expect(promise).resolves.not.toThrow();
     });
   });
 });
