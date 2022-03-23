@@ -1,5 +1,5 @@
 import { ValidateParametersAdapter } from '@/data/protocols';
-import { Validation } from '@/domain/usecases';
+import { Validation } from '@/domain/protocols';
 import { ObjectValidationError } from '@/presentation/errors';
 
 export class ValidateParameters implements Validation {
