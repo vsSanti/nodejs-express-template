@@ -4,7 +4,7 @@ This repository is a personal starter template that I've developed following [Ro
 ## Running locally
 There're two different ways of running this project locally:
 - Running `npm run dev`, which is going to run only the node server;
-- Running `make build` and then `make up`, to run the project using `docker-compose`, which is perfect to run with databases.
+- Running `docker-compose up --build`.
 
 > *They both listen to changes in code and reload the server when activated using nodemon.*
 
