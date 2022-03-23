@@ -1,4 +1,4 @@
-import { Validation } from '@/domain/usecases';
+import { Validation } from '@/domain/protocols';
 import { badRequest, ok } from '@/presentation/helpers';
 import { Controller, HttpResponse } from '@/presentation/protocols';
 

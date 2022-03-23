@@ -1,4 +1,4 @@
-import { Validation } from '@/domain/usecases';
+import { Validation } from '@/domain/protocols';
 
 export class ValidationSpy implements Validation {
   error: Error | undefined;
